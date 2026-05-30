@@ -338,7 +338,7 @@ export default function Page() {
           {step === 1 && (
             <>
               <p className="text-[13px] font-black italic tracking-[0.25em] text-[#E85F83]">
-                Q1 / 4
+                Q1 / 3
               </p>
 
               <h1 className="mt-5 text-[44px] font-black leading-[1.18] tracking-[-0.06em]">
@@ -358,7 +358,7 @@ export default function Page() {
                 ].map(([title, desc]) => (
                   <button
                     key={title}
-                    onClick={() => togglePregnancyStage(title)}
+                    onClick={() => setPregnancyStage([title])}
                     className={`w-full rounded-[20px] border px-6 py-7 text-left transition ${
                       pregnancyStage.includes(title)
                         ? "border-[#E85F83] bg-[#FFF0F3]"
@@ -376,7 +376,7 @@ export default function Page() {
           {step === 2 && (
             <>
               <p className="text-[13px] font-black italic tracking-[0.25em] text-[#E85F83]">
-                Q2 / 4
+                Q2 / 3
               </p>
 
               <h1 className="mt-5 text-[44px] font-black leading-[1.18] tracking-[-0.06em]">
@@ -423,76 +423,7 @@ export default function Page() {
           {step === 3 && (
             <>
               <p className="text-[13px] font-black italic tracking-[0.25em] text-[#E85F83]">
-                Q3 / 4
-              </p>
-
-              <h1 className="mt-5 text-[44px] font-black leading-[1.18] tracking-[-0.06em]">
-                함께 점검할 <span className="text-[#E85F83]">항목</span>을
-                <br />
-                모두 선택해주세요
-              </h1>
-
-              <p className="mt-5 text-[15px] text-[#666]">
-                선택한 항목을 기준으로 맞춤 안내를 도와드립니다
-              </p>
-
-              <p className="mt-5 text-[13px] font-black text-[#E85F83]">
-                ✓ 중복 선택 가능
-              </p>
-
-              <div className="mt-10 grid grid-cols-2 gap-4">
-                {[
-                  ["🤰", "임신 전 체크"],
-                  ["👶", "둘째 계획"],
-                  ["🏥", "여성질환"],
-                  ["🍼", "출산 후 부담"],
-                  ["💳", "기존 플랜"],
-                  ["👶", "50만원 보장"],
-                  ["📋", "보장 리모델링"],
-                  ["🌱", "처음 알아봄"],
-                ].map(([icon, title]) => (
-                  <button
-                    key={title}
-                    onClick={() => toggleBenefit(title)}
-                    className={`flex items-center justify-between rounded-[18px] border px-5 py-6 transition ${
-                      benefits.includes(title)
-                        ? "border-[#E85F83] bg-[#FFF0F3]"
-                        : "border-[#FFE1E8] bg-white"
-                    }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-[12px] bg-[#FFF0F3] text-[26px]">
-                        {icon}
-                      </div>
-
-                      <div className="text-left">
-                        <p className="text-[18px] font-black">{title}</p>
-
-                        {title === "처음 알아봄" && (
-                          <p className="mt-1 text-[12px] text-[#666]">
-                            혜택부터 쉽게 알고 싶어요
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div
-                      className={`h-6 w-6 rounded-full border ${
-                        benefits.includes(title)
-                          ? "border-[#E85F83] bg-[#E85F83]"
-                          : "border-[#E85F83]/50"
-                      }`}
-                    />
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-
-          {step === 3 && (
-            <>
-              <p className="text-[13px] font-black italic tracking-[0.25em] text-[#E85F83]">
-                FINAL / 4
+                FINAL / 3
               </p>
 
               <h1 className="mt-5 text-[44px] font-black leading-[1.18] tracking-[-0.06em]">
