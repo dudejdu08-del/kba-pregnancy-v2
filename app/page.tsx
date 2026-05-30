@@ -734,7 +734,7 @@ export default function Page() {
       <section className="px-5 pb-10">
         <div className="mx-auto max-w-[560px]">
           <h2 className="text-[30px] font-black leading-[1.28] tracking-[-0.05em] text-[#2F2F2F]">
-            나는 지금
+            나도 지금
             <br />
             <span className="text-[#E85F83]">확인해봐야 할까?</span>
           </h2>
