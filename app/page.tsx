@@ -126,11 +126,13 @@ export default function Page() {
     const redirectUri =
       "https://kba-pregnancy-v2.vercel.app/api/auth/kakao/callback";
 
-    const scope = ["name", "birthyear", "phone_number"].join(",");
+    const scope = ["name", "gender", "birthyear", "phone_number"].join(",");
 
     const surveyData = {
       name,
+      gender,
       birthyear,
+      phone,
       career_stage: pregnancyStage,
       main_concern: mainConcern,
       investment_products: benefits,
@@ -223,7 +225,7 @@ export default function Page() {
             처음 화면으로 돌아가기
           </button>
 
-          <p className="mt-10 text-[12px] font-bold text-[#999]">
+          <p className="mt-10 text-[11px] md:text-[12px] font-bold text-[#999]">
             KBA PARTNERS
           </p>
         </div>
@@ -267,7 +269,7 @@ export default function Page() {
 
                   <button
                     onClick={() => setModal(null)}
-                    className="mt-8 h-[58px] w-full rounded-[14px] bg-[#E85F83] text-[18px] font-black text-white"
+                    className="mt-8 h-[58px] w-full rounded-[14px] bg-[#E85F83] text-[16px] md:text-[18px] font-black text-white"
                   >
                     확인
                   </button>
@@ -308,7 +310,7 @@ export default function Page() {
 
                   <button
                     onClick={() => setModal(null)}
-                    className="mt-8 h-[58px] w-full rounded-[14px] bg-[#E85F83] text-[18px] font-black text-white"
+                    className="mt-8 h-[58px] w-full rounded-[14px] bg-[#E85F83] text-[16px] md:text-[18px] font-black text-white"
                   >
                     확인
                   </button>
@@ -320,7 +322,7 @@ export default function Page() {
 
         <div className="sticky top-0 z-50 border-b border-[#FFE1E8] bg-[#FFF7F3]/95 backdrop-blur">
           <div className="mx-auto max-w-[560px] px-5 py-4">
-            <div className="flex items-center justify-between text-[12px] font-black tracking-[0.12em]">
+            <div className="flex items-center justify-between text-[11px] md:text-[11px] md:text-[12px] font-black tracking-[0.12em]">
               <span className="text-[#999]">STEP {step} / 3</span>
               <span className="text-[#E85F83]">{step === 1 ? 33 : step === 2 ? 66 : 100}%</span>
             </div>
@@ -387,7 +389,7 @@ export default function Page() {
                 선택에 따라 체크 포인트가 달라집니다
               </p>
 
-              <div className="mt-12 space-y-4">
+              <div className="mt-10 grid grid-cols-2 gap-4">
                 {[
                   ["🎁", "출산 시 50만원 혜택", "혜택 내용 확인"],
                   ["📋", "임신 준비 체크리스트", "준비 항목 점검"],
@@ -401,19 +403,30 @@ export default function Page() {
                   <button
                     key={title}
                     onClick={() => toggleMainConcern(title)}
-                    className={`flex w-full items-center gap-5 rounded-[20px] border px-6 py-7 text-left transition ${
+                    className={`flex min-h-[120px] items-center justify-between rounded-[18px] border px-5 py-6 text-left transition ${
                       mainConcern.includes(title)
                         ? "border-[#E85F83] bg-[#FFF0F3]"
                         : "border-[#FFE1E8] bg-white"
                     }`}
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-[14px] bg-[#FFF0F3] text-[28px]">
-                      {icon}
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] bg-[#FFF0F3] text-[26px]">
+                        {icon}
+                      </div>
+
+                      <div>
+                        <p className="text-[18px] font-black leading-[1.35]">{title}</p>
+                        <p className="mt-1 text-[12px] leading-[1.4] text-[#666]">{desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-[22px] font-black">{title}</p>
-                      <p className="mt-3 text-[14px] text-[#666]">{desc}</p>
-                    </div>
+
+                    <div
+                      className={`ml-3 h-6 w-6 shrink-0 rounded-full border ${
+                        mainConcern.includes(title)
+                          ? "border-[#E85F83] bg-[#E85F83]"
+                          : "border-[#E85F83]/50"
+                      }`}
+                    />
                   </button>
                 ))}
               </div>
@@ -511,7 +524,7 @@ export default function Page() {
                 : "bg-[#F0C6D0] text-white"
             }`}
           >
-            {step < 4 ? "선택 후 다음으로" : "임신 전 준비 체크 신청 완료하기"}
+            {step < 3 ? "선택 후 다음으로" : "임신 전 준비 체크 신청 완료하기"}
           </button>
 
           {step > 1 && (
@@ -651,7 +664,7 @@ export default function Page() {
                 <h3 className="text-[15px] font-black text-[#E85F83]">
                   {title}
                 </h3>
-                <p className="mt-3 text-[12px] leading-relaxed text-[#666]">
+                <p className="mt-3 text-[11px] md:text-[12px] leading-relaxed text-[#666]">
                   {desc}
                 </p>
               </div>
@@ -706,7 +719,7 @@ export default function Page() {
                     <h3 className="text-[17px] font-black leading-[1.35] text-[#2F2F2F]">
                       {title}
                     </h3>
-                    <p className="mt-2 text-[12px] leading-[1.6] text-[#666]">
+                    <p className="mt-2 text-[11px] md:text-[12px] leading-[1.6] text-[#666]">
                       {desc}
                     </p>
                   </div>
@@ -751,7 +764,7 @@ export default function Page() {
                   “{text}”
                 </p>
 
-                <p className="mt-7 text-[12px] font-bold text-[#777]">
+                <p className="mt-7 text-[11px] md:text-[12px] font-bold text-[#777]">
                   {name}
                 </p>
               </div>
