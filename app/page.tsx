@@ -44,21 +44,25 @@ declare global {
 }
 
 export default function Page() {
-  const [mode, setMode] = useState<
-    "landing" | "profile" | "survey" | "complete"
-  >("landing");
+  const [mode, setMode] = useState<"landing" | "survey" | "complete">("landing");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
 
     if (params.get("kakao") === "success") {
+      setName(params.get("name") || "");
+      setGender(params.get("gender") || "");
+      setBirthyear(params.get("birthyear") || "");
       setPhone(params.get("phone") || "");
-      setMode("profile");
+
+      setMode("survey");
+      window.history.replaceState({}, "", "/");
     }
   }, []);
 
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
   const [birthyear, setBirthyear] = useState("");
   const [phone, setPhone] = useState("");
   const [pregnancyStage, setPregnancyStage] = useState<string[]>([]);
@@ -78,11 +82,11 @@ export default function Page() {
         },
         body: JSON.stringify({
           name,
+          gender,
           birthyear,
           phone,
           career_stage: pregnancyStage.join(", "),
           main_concern: mainConcern.join(", "),
-          investment_products: benefits,
           agree_privacy: agree1,
           agree_third_party: agree2,
         }),
@@ -120,7 +124,7 @@ export default function Page() {
     }
 
     const redirectUri =
-      "https://kba-pregnancy.vercel.app/api/auth/kakao/callback";
+      "https://kba-pregnancy-v2.vercel.app/api/auth/kakao/callback";
 
     const scope = ["name", "birthyear", "phone_number"].join(",");
 
@@ -224,57 +228,6 @@ export default function Page() {
           <p className="mt-10 text-[12px] font-bold text-[#999]">
             KBA PARTNERS
           </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (mode === "profile") {
-    return (
-      <main className="min-h-screen bg-[#FFF7F3] px-5 text-[#2F2F2F]">
-        <div className="mx-auto flex min-h-screen max-w-[560px] flex-col justify-center">
-          <p className="text-[13px] font-black italic tracking-[0.3em] text-[#E85F83]">
-            MEMBER INFO
-          </p>
-
-          <h1 className="mt-5 text-[42px] font-black leading-[1.2] tracking-[-0.06em]">
-            임신 전 준비 체크를 위한
-            <br />
-            기본정보를 입력해주세요
-          </h1>
-
-          <p className="mt-5 text-[15px] leading-[1.7] text-[#666]">
-            입력하신 정보는 임신 전 준비 체크 및 상담 안내 목적으로만 사용됩니다.
-          </p>
-
-          <div className="mt-10 space-y-5">
-            <input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="이름"
-              className="w-full rounded-[16px] border border-[#FFE1E8] bg-white px-5 py-5 text-[17px] font-bold text-[#2F2F2F] outline-none placeholder:text-[#AAA]"
-            />
-
-            <input
-              value={birthyear}
-              onChange={(e) => setBirthyear(e.target.value)}
-              placeholder="출생연도 예: 1992"
-              maxLength={4}
-              className="w-full rounded-[16px] border border-[#FFE1E8] bg-white px-5 py-5 text-[17px] font-bold text-[#2F2F2F] outline-none placeholder:text-[#AAA]"
-            />
-          </div>
-
-          <button
-            disabled={!name || birthyear.length !== 4}
-            onClick={() => setMode("survey")}
-            className={`mt-8 h-[64px] w-full rounded-[18px] text-[19px] font-black transition ${
-              name && birthyear.length === 4
-                ? "bg-[#E85F83] text-white"
-                : "bg-[#F0C6D0] text-white"
-            }`}
-          >
-            기본정보 저장 후 준비 체크 시작하기
-          </button>
         </div>
       </main>
     );
