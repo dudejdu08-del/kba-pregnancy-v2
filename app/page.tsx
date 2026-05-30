@@ -557,7 +557,7 @@ export default function Page() {
         }
       `}</style>
 
-      <section className="relative flex min-h-[640px] justify-center overflow-hidden px-5 pt-16 text-center">
+      <section className="relative flex min-h-[560px] justify-center overflow-hidden px-5 pt-10 text-center">
         <div className="absolute inset-0 bg-gradient-to-b from-[#FFE3E8] via-[#FFF7F3] to-[#FFF7F3]" />
         <div className="absolute left-[-90px] top-[80px] h-[220px] w-[220px] rounded-full bg-[#FFD1DC]/60 blur-3xl" />
         <div className="absolute right-[-80px] top-[230px] h-[220px] w-[220px] rounded-full bg-[#FFE2B8]/60 blur-3xl" />
