@@ -175,8 +175,6 @@ export default function Page() {
       ? pregnancyStage.length > 0
       : step === 2
       ? mainConcern.length > 0
-      : step === 3
-      ? benefits.length > 0
       : agree1 && agree2;
 
   if (mode === "complete") {
@@ -323,14 +321,14 @@ export default function Page() {
         <div className="sticky top-0 z-50 border-b border-[#FFE1E8] bg-[#FFF7F3]/95 backdrop-blur">
           <div className="mx-auto max-w-[560px] px-5 py-4">
             <div className="flex items-center justify-between text-[12px] font-black tracking-[0.12em]">
-              <span className="text-[#999]">STEP {step} / 4</span>
-              <span className="text-[#E85F83]">{step * 25}%</span>
+              <span className="text-[#999]">STEP {step} / 3</span>
+              <span className="text-[#E85F83]">{step === 1 ? 33 : step === 2 ? 66 : 100}%</span>
             </div>
 
             <div className="mt-3 h-[3px] rounded-full bg-[#FFE1E8]">
               <div
                 className="h-full rounded-full bg-[#E85F83] transition-all duration-300"
-                style={{ width: `${step * 25}%` }}
+                style={{ width: `${step === 1 ? 33 : step === 2 ? 66 : 100}%` }}
               />
             </div>
           </div>
@@ -353,10 +351,10 @@ export default function Page() {
 
               <div className="mt-12 space-y-4">
                 {[
-                  ["임신 준비 중", "임신 전에 먼저 확인해야 할 항목 체크"],
-                  ["난임 관련 항목 고민", "검사 전 미리 확인해야 할 항목 점검"],
-                  ["결혼 예정", "임신 확인 후 체크할 혜택과 여성질환 점검"],
-                  ["신혼", "출산 전후 여성질환 준비과 보험료 부담 완화 구조 확인"],
+                  ["임신 준비 중", "가장 많이 확인하는 준비 항목 체크"],
+                  ["1년 이내 임신 계획 중", "임신 전 미리 준비하면 좋은 내용 확인"],
+                  ["2년 이내 임신 계획 중", "여유 있게 준비할 수 있는 항목 안내"],
+                  ["둘째·셋째 계획 중", "첫째 때 놓쳤던 부분 다시 점검"],
                 ].map(([title, desc]) => (
                   <button
                     key={title}
@@ -391,10 +389,14 @@ export default function Page() {
 
               <div className="mt-12 space-y-4">
                 {[
-                  ["🎁", "임신 시 50만원 보장", "임신 전 준비 여부에 따라 확인할 수 있는 항목"],
-                  ["🧬", "난임 관련 항목", "검사 전 미리 확인할 준비 포인트"],
-                  ["🍼", "출산 후 부담", "출산 이후 부담 완화 가능 여부 체크"],
-                  ["🏛️", "여성질환 준비", "임신기존 준비에서 빠진 부분 확인"],
+                  ["🎁", "출산 시 50만원 혜택", "혜택 내용 확인"],
+                  ["📋", "임신 준비 체크리스트", "준비 항목 점검"],
+                  ["💰", "정부지원금 확인", "지원금 체크"],
+                  ["🏥", "여성질환 체크", "임신 전 점검"],
+                  ["🍼", "출산 후 부담", "비용 부담 체크"],
+                  ["🛡️", "태아보험 안내", "미리 알아보기"],
+                  ["📑", "무료 보험 리모델링", "기존 보장 점검"],
+                  ["🌱", "처음 알아봐요", "기초부터 안내"],
                 ].map(([icon, title, desc]) => (
                   <button
                     key={title}
@@ -487,7 +489,7 @@ export default function Page() {
             </>
           )}
 
-          {step === 4 && (
+          {step === 3 && (
             <>
               <p className="text-[13px] font-black italic tracking-[0.25em] text-[#E85F83]">
                 FINAL / 4
@@ -565,7 +567,7 @@ export default function Page() {
             onClick={() => {
               if (!canNext) return;
 
-              if (step < 4) {
+              if (step < 3) {
                 setStep(step + 1);
                 return;
               }
@@ -580,12 +582,6 @@ export default function Page() {
           >
             {step < 4 ? "선택 후 다음으로" : "임신 전 준비 체크 신청 완료하기"}
           </button>
-
-          {step === 4 && (
-            <p className="mt-6 text-center text-[13px] text-[#888]">
-              상담 신청만으로 가입이 진행되지 않습니다.
-            </p>
-          )}
 
           {step > 1 && (
             <button
