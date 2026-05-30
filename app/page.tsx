@@ -389,7 +389,7 @@ export default function Page() {
                 선택에 따라 체크 포인트가 달라집니다
               </p>
 
-              <div className="mt-10 grid grid-cols-2 gap-4">
+              <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {[
                   ["🎁", "출산 시 50만원 혜택", "혜택 내용 확인"],
                   ["📋", "임신 준비 체크리스트", "준비 항목 점검"],
@@ -403,7 +403,7 @@ export default function Page() {
                   <button
                     key={title}
                     onClick={() => toggleMainConcern(title)}
-                    className={`flex min-h-[120px] items-center justify-between rounded-[18px] border px-5 py-6 text-left transition ${
+                    className={`flex min-h-[88px] items-center justify-between rounded-[18px] border px-4 py-4 text-left transition sm:min-h-[120px] sm:px-5 sm:py-6 ${
                       mainConcern.includes(title)
                         ? "border-[#E85F83] bg-[#FFF0F3]"
                         : "border-[#FFE1E8] bg-white"
@@ -415,8 +415,8 @@ export default function Page() {
                       </div>
 
                       <div>
-                        <p className="text-[18px] font-black leading-[1.35]">{title}</p>
-                        <p className="mt-1 text-[12px] leading-[1.4] text-[#666]">{desc}</p>
+                        <p className="text-[16px] font-black leading-[1.35] sm:text-[18px]">{title}</p>
+                        <p className="mt-1 text-[11px] leading-[1.4] text-[#666] sm:text-[12px]">{desc}</p>
                       </div>
                     </div>
 
