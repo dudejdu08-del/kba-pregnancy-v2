@@ -528,7 +528,7 @@ export default function Page() {
                 : "bg-[#F0C6D0] text-white"
             }`}
           >
-            {step < 3 ? "선택 후 다음으로" : "임신 전 준비 체크 신청 완료하기"}
+            {step < 3 ? "선택 후 다음으로" : "🎁 내가 받을 수 있는 혜택 확인"}
           </button>
 
           {step > 1 && (
@@ -807,7 +807,7 @@ export default function Page() {
           >
             {isMoving
               ? "카카오 로그인으로 이동중입니다..."
-              : "💬 3초 임신 전 준비 체크하기"}
+              : "🎁 출산 혜택 확인하기"}
           </button>
         </div>
       </div>
