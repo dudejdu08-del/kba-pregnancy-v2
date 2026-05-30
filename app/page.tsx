@@ -192,7 +192,7 @@ export default function Page() {
           </p>
 
           <h1 className="mt-5 text-[42px] font-black leading-[1.2] tracking-[-0.06em] text-[#2F2F2F]">
-            준비 체크 신청이
+            혜택 체크 신청이
             <br />
             완료되었습니다
           </h1>
@@ -200,7 +200,7 @@ export default function Page() {
           <p className="mt-6 text-[16px] leading-[1.8] text-[#666]">
             입력해주신 내용을 바탕으로
             <br />
-            임신 전 확인할 수 있는 여성질환 항목을 정리해드릴게요.
+            임신·출산 혜택과 여성 보장 내용을 확인해드릴게요.
           </p>
 
           <div className="mt-10 w-full rounded-[22px] border border-[#FFE1E8] bg-white px-6 py-7 shadow-sm">
