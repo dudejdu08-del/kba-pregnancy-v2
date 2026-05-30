@@ -389,6 +389,10 @@ export default function Page() {
                 선택에 따라 체크 포인트가 달라집니다
               </p>
 
+              <p className="mt-3 text-[14px] font-semibold text-[#E85F83]">
+              ✓ 중복 선택 가능
+              </p>
+
               <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 {[
                   ["🎁", "출산 시 50만원 혜택", "혜택 내용 확인"],
