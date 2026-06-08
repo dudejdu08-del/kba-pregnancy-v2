@@ -347,13 +347,19 @@ export default function Page() {
                 현재 <span className="text-[#E85F83]">상황</span>을 알려주세요
               </h1>
 
-              <p className="mt-5 text-[15px] text-[#666]">
-                아직 임신 전인지 확인 후, 필요한 준비 항목을 안내드려요
+              <p className="mt-5 text-[15px] leading-relaxed">
+                <span className="font-bold text-[#E85F83]">
+                  ⚠️ 현재 임신 중이라면 해당 체크 대상이 아닙니다.
+                </span>
+                <br />
+                <span className="text-[#666]">
+                  임신 전, 임신을 계획하시는 분만 신청 가능합니다.
+                </span>
               </p>
 
               <div className="mt-12 space-y-4">
                 {[
-                  ["임신 준비 중", "가장 많이 확인하는 준비 항목 체크"],
+                  ["임신 계획 중", "가장 많이 확인하는 준비 항목 체크"],
                   ["1년 이내 임신 계획 중", "임신 전 미리 준비하면 좋은 내용 확인"],
                   ["2년 이내 임신 계획 중", "여유 있게 준비할 수 있는 항목 안내"],
                   ["둘째·셋째 계획 중", "첫째 때 놓쳤던 부분 다시 점검"],
