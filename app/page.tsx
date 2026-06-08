@@ -347,7 +347,7 @@ export default function Page() {
                 현재 <span className="text-[#E85F83]">상황</span>을 알려주세요
               </h1>
 
-              <p className="mt-5 text-[15px] leading-relaxed">
+              <p className="mt-5 text-[18px] leading-relaxed">
                 <span className="font-bold text-[#E85F83]">
                   ⚠️ 현재 임신 중이라면 해당 체크 대상이 아닙니다.
                 </span>
